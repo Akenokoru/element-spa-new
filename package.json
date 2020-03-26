@@ -6,7 +6,9 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "axios": "^0.19.2",
@@ -37,6 +39,7 @@
     "lint-staged": "^9.5.0",
     "vue-cli-plugin-element": "~1.0.1",
     "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.4.0",
     "yorkie": "^2.0.0"
   },
   "gitHooks": {
