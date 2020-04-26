@@ -4,7 +4,8 @@
       <el-form :inline="true" size="medium">
         <el-row>
           <el-col :span="5">
-            <el-form-item label="登录名">
+            <!-- i18n样例 -->
+            <el-form-item :label="$t('message.uname')">
               <el-input v-model="search.searchFields.login_name" placeholder="请输入登录名"></el-input>
             </el-form-item>
           </el-col>

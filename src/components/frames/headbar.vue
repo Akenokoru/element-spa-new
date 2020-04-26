@@ -5,6 +5,16 @@
     </div>
     <div class="logo">后台管理系统</div>
     <div class="header-right">
+      <el-dropdown @command="handleLangCommand">
+        <span class="el-dropdown-link">
+                  中英文切换
+          <i class="el-icon-arrow-down el-icon--right"></i>
+        </span>
+        <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item command="cn">中文</el-dropdown-item>
+              <el-dropdown-item command="en">英文</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
       <el-tooltip class="item" effect="dark" content="系统消息" placement="bottom">
         <el-badge is-dot class="badge">
           <i class="el-icon-bell"></i>
@@ -42,7 +52,26 @@ export default {
     handleSidebar() {
       this.isCollapse = !this.isCollapse
       this.$emit('sidebar', this.isCollapse)
-    }
+    },
+
+    handleLangCommand(command) {
+      // this.$message("click on item " + command);
+      switch (command) {
+        case 'cn': {
+          this.lang = 'cn';
+          this.$i18n.locale = this.lang;
+          break;
+        }
+        case 'en': {
+          this.lang = 'en';
+          this.$i18n.locale = this.lang;
+          break;
+        }
+
+        default:
+          break;
+      }
+    },
   }
 }
 </script>
