@@ -6,7 +6,8 @@
       </div>
       <input type="username" name="username" v-model="form.username">
       <input type="password" name="password" v-model="form.password">
-      <button @click="login">Login</button>
+      <!-- i18n样例 -->
+      <button @click="login">{{$t('message.login')}}</button>
       <div class="login-desc">
         <p>测试用户名admin，密码111111</p>
       </div>
