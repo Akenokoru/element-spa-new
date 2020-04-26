@@ -1,27 +1,26 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import router from './routerMap.js'
+import store from '@/store'
 
-Vue.use(VueRouter)
+const setTitle = (route) => {
+  document.title = route.meta.title ? route.meta.title : 'element-spa2'
+}
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+router.beforeEach((to, from, next) => {
+  let auth = to.meta.auth
+  let isLogin = Boolean(store.state.User.username)
+
+  if (auth && !isLogin) {
+    Vue.prototype.$message.info('尚未登录')
+    return next({ name: 'login' })
   }
-]
 
-const router = new VueRouter({
-  routes
+  if (!to.meta.noBread) store.dispatch('BREAD', to.matched)
+  next()
+})
+
+router.afterEach(route => {
+  setTitle(route)
 })
 
 export default router
